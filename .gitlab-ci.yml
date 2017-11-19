@@ -1,0 +1,18 @@
+stages:
+  - test
+  - deploy
+
+test:
+  stage: test
+  script: bash test.sh
+  tags:
+    - wen
+
+deploy_staging:
+  stage: deploy
+  script:
+    - bash prod.sh down && bash prod.sh up
+  only:
+    - master
+  tags:
+    - stage

@@ -1,0 +1,6 @@
+query getAllNotes {
+  notes {
+    id
+    text
+  }
+}

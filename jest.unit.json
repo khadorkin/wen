@@ -1,0 +1,17 @@
+{
+  "testMatch": [
+    "**/*.test.js?(x)"
+  ],
+  "clearMocks": true,
+  "setupFiles": [
+    "./server/test/init.js"
+  ],
+  "testEnvironment": "node",
+  "transform": {
+    "\\.(gql|graphql)$": "jest-transform-graphql",
+    ".*": "babel-jest"
+  },
+  "globals": {
+    "PREBUILD": false
+  }
+}

@@ -1,0 +1,48 @@
+version: '2'
+
+services:
+  postgres:
+    image: postgres:9.6.2-alpine
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:3.2.5-alpine
+    volumes:
+      - redis-data:/data
+
+  api:
+    links:
+      - redis
+      - postgres
+      - logspout
+
+  socket:
+    links:
+      - redis
+      - postgres
+
+  static:
+    links:
+      - postgres
+
+  runner:
+    links:
+      - postgres
+      - nginx
+
+  nginx:
+    build:
+      context: ./dockerfiles/ngnix/
+    volumes_from:
+      - api
+    links:
+      - api
+      - static
+      - socket
+
+volumes:
+  postgres-data:
+    driver: local
+  redis-data:
+    driver: local

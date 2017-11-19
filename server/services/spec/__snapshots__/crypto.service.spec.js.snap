@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should decrypt data 1`] = `"�#��L��0�Yз����"`;
+
+exports[`should encrypt data 1`] = `"4237cc90"`;
